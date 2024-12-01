@@ -1,0 +1,149 @@
+<div class="main-screen w-screen h-screen flex items-center justify-center bg-gray-100">
+    <div class="flex gap-4 w-10/12 sm:w-5/12 flex-col m-auto">
+      <h2 class="text-2xl font-bold text-center mb-6 text-gray-800">Create Your Account</h2>
+      
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="space-y-4">
+        <!-- First Name and Last Name -->
+        <div class="grid grid-cols-2 gap-4">
+          <div class="relative">
+            <fa-icon [icon]="faUserCircle" class="absolute top-1/2 -translate-y-1/2 left-4 text-gray-500"></fa-icon>
+            <input 
+              type="text" 
+              formControlName="firstName"
+              id="firstName" 
+              placeholder="First Name" 
+              class="w-full pl-12 pr-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+            <div *ngIf="registerForm.get('firstName')?.invalid && registerForm.get('firstName')?.touched" class="text-red-500 text-sm">
+              First name is required.
+            </div>
+          </div>
+  
+          <div class="relative">
+            <fa-icon [icon]="faUserCircle" class="absolute top-1/2 -translate-y-1/2 left-4 text-gray-500"></fa-icon>
+            <input 
+              type="text" 
+              formControlName="lastName"
+              id="lastName" 
+              placeholder="Last Name" 
+              class="w-full pl-12 pr-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+            <div *ngIf="registerForm.get('lastName')?.invalid && registerForm.get('lastName')?.touched" class="text-red-500 text-sm">
+              Last name is required.
+            </div>
+          </div>
+        </div>
+  
+        <!-- Email and Username -->
+        <div class="grid grid-cols-2 gap-4">
+          <div class="relative">
+            <fa-icon [icon]="faEnvelope" class="absolute top-1/2 -translate-y-1/2 left-4 text-gray-500"></fa-icon>
+            <input 
+              type="email" 
+              formControlName="email"
+              id="email" 
+              placeholder="Email" 
+              class="w-full pl-12 pr-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+            <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="text-red-500 text-sm">
+              Valid email is required.
+            </div>
+          </div>
+  
+          <div class="relative">
+            <fa-icon [icon]="faUserCircle" class="absolute top-1/2 -translate-y-1/2 left-4 text-gray-500"></fa-icon>
+            <input 
+              type="text" 
+              formControlName="username"
+              id="username" 
+              placeholder="Username" 
+              class="w-full pl-12 pr-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+            <div *ngIf="registerForm.get('username')?.invalid && registerForm.get('username')?.touched" class="text-red-500 text-sm">
+              Username is required.
+            </div>
+          </div>
+        </div>
+  
+        <!-- Password and Confirm Password -->
+        <div class="grid grid-cols-2 gap-4">
+          <div class="relative">
+            <fa-icon [icon]="faLock" class="absolute top-1/2 -translate-y-1/2 left-4 text-gray-500"></fa-icon>
+            <input 
+              type="password" 
+              formControlName="password"
+              id="password" 
+              placeholder="Password" 
+              class="w-full pl-12 pr-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+            <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" class="text-red-500 text-sm">
+              Password must be at least 6 characters.
+            </div>
+          </div>
+  
+          <div class="relative">
+            <fa-icon [icon]="faLock" class="absolute top-1/2 -translate-y-1/2 left-4 text-gray-500"></fa-icon>
+            <input 
+              type="password" 
+              formControlName="confirmPassword"
+              id="confirmPassword" 
+              placeholder="Confirm Password" 
+              class="w-full pl-12 pr-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+            <div *ngIf="registerForm.get('confirmPassword')?.invalid && registerForm.get('confirmPassword')?.touched" class="text-red-500 text-sm">
+              Confirm Password is required.
+            </div>
+          </div>
+        </div>
+  
+        <!-- Nationality and CIN -->
+        <div class="grid grid-cols-2 gap-4">
+          <div class="relative">
+            <fa-icon [icon]="faFlagUsa" class="absolute top-1/2 -translate-y-1/2 left-4 text-gray-500"></fa-icon>
+            <input 
+              type="text" 
+              formControlName="nationality"
+              id="nationality" 
+              placeholder="Nationality" 
+              class="w-full pl-12 pr-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+            <div *ngIf="registerForm.get('nationality')?.invalid && registerForm.get('nationality')?.touched" class="text-red-500 text-sm">
+              Nationality is required.
+            </div>
+          </div>
+  
+          <div class="relative">
+            <fa-icon [icon]="faIdCard" class="absolute top-1/2 -translate-y-1/2 left-4 text-gray-500"></fa-icon>
+            <input 
+              type="text" 
+              formControlName="cin"
+              id="cin" 
+              placeholder="CIN" 
+              class="w-full pl-12 pr-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+            <div *ngIf="registerForm.get('cin')?.invalid && registerForm.get('cin')?.touched" class="text-red-500 text-sm">
+              CIN is required.
+            </div>
+          </div>
+        </div>
+  
+        <!-- Submit Button -->
+        <div class="mt-6">
+          <button 
+            type="submit" 
+            [disabled]="registerForm.invalid"
+            class="w-full py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300 ease-in-out transform hover:scale-101 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+          >
+            Sign Up
+          </button>
+        </div>
+  
+        <!-- Links -->
+        <div class="flex w-full justify-between text-lg font-medium">
+          <a routerLink="/login"><span class="hover:underline hover:text-blue-500">Already have an account?</span></a>
+          <a href="#"><span class="hover:underline hover:text-blue-500">Need Help?</span></a>
+        </div>
+      </form>
+    </div>
+  </div>
+  
